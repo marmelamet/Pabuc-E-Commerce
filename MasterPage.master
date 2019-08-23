@@ -1,0 +1,206 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8">
+    <!-- Title here -->
+    <title>Pabuç</title>
+    <!-- Description, Keywords and Author -->
+    <meta name="description" content="Your description" />
+    <meta name="keywords" content="Your,Keywords" />
+    <meta name="author" content="Eren ACAR" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Styles -->
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Animate css -->
+    <link href="css/animate.min.css" rel="stylesheet" />
+    <!-- Dropdown menu -->
+    <link href="css/ddlevelsmenu-base.css" rel="stylesheet" />
+    <link href="css/ddlevelsmenu-topbar.css" rel="stylesheet" />
+    <!-- Countdown -->
+    <link href="css/jquery.countdown.css" rel="stylesheet" />
+    <!-- Font awesome CSS -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon2.png" />
+    <script src="js/jquery.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Dropdown menu -->
+    <script src="js/ddlevelsmenu.js"></script>
+    <!-- Countdown -->
+    <script src="js/jquery.plugin.min.js"></script>
+    <script src="js/jquery.countdown.min.js"></script>
+    <!-- jQuery Navco -->
+    <script src="js/jquery.navgoco.min.js"></script>
+    <!-- Filter for support page -->
+    <script src="js/filter.js"></script>
+    <!-- Respond JS for IE8 -->
+    <script src="js/respond.min.js"></script>
+    <!-- HTML5 Support for IE -->
+    <script src="js/html5shiv.js"></script>
+    <%--zoom--%>
+    <script src="js/jquery.elevateZoom-3.0.8.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            UpdateBasket();
+        });
+        function UpdateBasket() {
+            $.get("/SepetJson.aspx", function (data) {
+                if (data)
+                {
+                    $("#<%=lbl_adet.ClientID%>").html(data.itemcount);
+                    $("#<%=lbl_toplam.ClientID%>").html(data.PriceTotal);
+                }
+            });
+        }
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager runat="server" ID="scrmngr"></asp:ScriptManager>
+        <div>
+            <!-- Logo & Navigation starts -->
+            <div class="header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3">
+                            <!-- Logo -->
+                            <div class="logo">
+                                <h1><a href="Default.aspx">
+                                    <img src="img/st-logo2.png" /></a></h1>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-5">
+                            <!-- Navigation menu -->
+                            <div class="navi">
+                                <div id="ddtopmenubar" class="mattblackmenu">
+                                    <ul>
+                                        <li><a href="klasik.aspx" rel="ddsubmenu1">Klasik</a>
+
+                                        </li>
+                                        <li><a href="sporAyakkabi.aspx" rel="ddsubmenu1">Spor Ayakkabı</a>
+
+                                        </li>
+                                        <li><a href="outdoor.aspx" rel="ddsubmenu1">Outdoor</a>
+
+                                       <%-- </li>
+                                        <li><a href="carsiPazar.aspx" rel="ddsubmenu1">Çarşı-Pazar</a>
+                                        </li>--%>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Dropdown NavBar -->
+                            <div class="navis"></div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-4">
+                            <div class="kart-links">
+                                <a href="odeme.aspx"><i class="fa fa-shopping-cart"></i>
+                                    <asp:UpdatePanel runat="server" ID="up1">
+                                        <ContentTemplate>
+                                            &nbsp;<asp:Label runat="server" ID="lbl_adet" Text="0"></asp:Label>
+                                            ürün -&nbsp;₺
+                                                <asp:Label runat="server" ID="lbl_toplam" Text="0"></asp:Label>
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Logo & Navigation ends -->
+            <div class="clearfix"></div>
+
+            <asp:ContentPlaceHolder ID="middleContent" runat="server">
+            </asp:ContentPlaceHolder>
+
+
+
+            <!-- Footer starts -->
+            <footer>
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="col-md-4 col-sm-4">
+                            <div class="fwidget">
+
+                              
+                                <p>&nbsp;</p>
+                                <div class="address">
+                                    <p>Adres: Merter İşhanı</p>
+                                    <p>Kat:4 No:421 </p>
+                                    <p>Merter - İstanbul / TÜRKİYE.</p>
+                                    <p><a href="tel:+902123548945">+90 212 354 89 45</a></p>
+                                    <p><a href="mailto:info@pabuc.com">info@pabuc.com</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-4">
+                            <div class="fwidget">
+                                <h4>Linkler</h4>
+                                <hr />
+                                <ul>
+                                    <li><a href="Default.aspx">Ana sayfa</a></li>
+                                    <li><a href="hakkimizda.aspx">Biz Kimiz</a></li>
+                                    <li><a href="urunlerHakkinda.aspx">Ürünlerimiz Hakkında</a></li>
+                                    <li><a href="iletisim.aspx">İletişim</a></li>
+                                </ul>
+                                <ul>
+                                    <li><a href="sozlesme.aspx">Kullanıcı Sözleşmesi</a></li>
+                                    <li><a href="teslimat.aspx">Ödeme ve Teslimat</a></li>
+                                    <li><a href="gizlilik.aspx">Gizlilik ve Güvenlik</a></li>
+                                    <li><a href="degisimIade.aspx">Değişim ve İade</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-4 col-sm-4">
+                            <div class="fwidget">
+
+                                <h4>Sosyal Ağlar</h4>
+                                <hr />
+                                <div class="social">
+                                    <a href="https://www.facebook.com/marmelamet" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+                                    <a href="https://instagram.com/pabuc/" class="instagram" target="_blank"><i class="fa fa-instagram"></i></a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <hr />
+
+                    <div class="copy text-center">
+                        Copyright 2018 &copy; - <a href="http://erenacar.com" target="_blank">Eren ACAR</a>
+                    </div>
+                </div>
+            </footer>
+            <!-- Footer ends -->
+
+            <!-- Scroll to top -->
+            
+            <!-- Custom JS -->
+            <script src="js/custom.js"></script>
+
+
+        </div>
+    </form>
+</body>
+</html>

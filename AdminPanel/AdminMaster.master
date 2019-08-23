@@ -1,0 +1,150 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminMaster.master.cs" Inherits="AdminMaster" %>
+
+
+<%@ Register Src="userControls/LeftMenu.ascx" TagPrefix="uc1" TagName="LeftMenu" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Pabuç Admin Paneli</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link href="css/bootstrap-cerulean.css" rel="stylesheet" />
+
+    <style type="text/css">
+        body {
+            padding-bottom: 40px;
+        }
+
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+    </style>
+
+   
+    <link href="css/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="css/charisma-app.css" rel="stylesheet" />
+    <link href="css/jquery-ui-1.8.21.custom.css" rel="stylesheet" />
+    <link href='css/fullcalendar.css' rel='stylesheet' />
+    <link href='css/fullcalendar.print.css' rel='stylesheet' media='print' />
+    <link href='css/chosen.css' rel='stylesheet' />
+    <link href='css/uniform.default.css' rel='stylesheet' />
+    <link href='css/colorbox.css' rel='stylesheet' />
+    <link href='css/jquery.cleditor.css' rel='stylesheet' />
+    <link href='css/jquery.noty.css' rel='stylesheet' />
+    <link href='css/noty_theme_default.css' rel='stylesheet' />
+    <link href='css/elfinder.min.css' rel='stylesheet' />
+    <link href='css/elfinder.theme.css' rel='stylesheet' />
+    <link href='css/jquery.iphone.toggle.css' rel='stylesheet' />
+    <link href='css/opa-icons.css' rel='stylesheet' />
+    <link href='css/uploadify.css' rel='stylesheet' />
+   <%-- <link type="text/css" href="https://cdn.datatables.net/1.10.7/css/jquery.dataTables.css" rel="stylesheet" />--%>
+    <link href="css/jquery.dataTables1.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/bootstrap-transition.js"></script>
+    <script type="text/javascript" src="js/bootstrap-alert.js"></script>
+    <script type="text/javascript" src="js/bootstrap-modal.js"></script>
+    <script type="text/javascript" src="js/bootstrap-dropdown.js"></script>
+    <script type="text/javascript" src="js/bootstrap-scrollspy.js"></script>
+    <script type="text/javascript" src="js/bootstrap-tab.js"></script>
+    <script type="text/javascript" src="js/bootstrap-tooltip.js"></script>
+    <script type="text/javascript" src="js/bootstrap-popover.js"></script>
+    <script type="text/javascript" src="js/bootstrap-button.js"></script>
+    <script type="text/javascript" src="js/bootstrap-collapse.js"></script>
+    <script type="text/javascript" src="js/bootstrap-carousel.js"></script>
+    <script type="text/javascript" src="js/bootstrap-typeahead.js"></script>
+    <script type="text/javascript" src="js/bootstrap-tour.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src='js/fullcalendar.min.js'></script>
+<%--    <script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>--%>
+    <script src="js/jquery.dataTables.min1.js"></script>
+    <%--<script type="text/javascript" src='js/jquery.dataTables.min.js'></script>--%>
+    <script type="text/javascript" src="js/excanvas.js"></script>
+    <script type="text/javascript" src="js/jquery.flot.min.js"></script>
+    <script type="text/javascript" src="js/jquery.flot.pie.min.js"></script>
+    <script type="text/javascript" src="js/jquery.flot.stack.js"></script>
+    <script type="text/javascript" src="js/jquery.flot.resize.min.js"></script>
+    <script type="text/javascript" src="js/jquery.chosen.min.js"></script>
+    <script type="text/javascript" src="js/jquery.uniform.min.js"></script>
+    <script type="text/javascript" src="js/jquery.colorbox.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cleditor.min.js"></script>
+    <script type="text/javascript" src="js/jquery.noty.js"></script>
+    <script type="text/javascript" src="js/jquery.elfinder.min.js"></script>
+    <script type="text/javascript" src="js/jquery.raty.min.js"></script>
+    <script type="text/javascript" src="js/jquery.iphone.toggle.js"></script>
+    <script type="text/javascript" src="js/jquery.autogrow-textarea.js"></script>
+    <script type="text/javascript" src="js/jquery.uploadify-3.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.history.js"></script>
+    <script type="text/javascript" src="js/charisma.js"></script>
+    <script type="text/javascript" src="js/popupevent.js"></script>
+      <script src="js/ckeditor.js"></script>
+    <asp:ContentPlaceHolder runat="server" ID="head"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="navbar">
+            <div class="navbar-inner" style="background-color:#999999 !important">
+                <div class="container-fluid" >
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="SiparisListesi.aspx">
+                        <img alt="Pabuc" src="img/st-logo2.png" />
+                        <span style="margin-top:12px;margin-left:10px;float:left;color:white;font-weight:600">Pabuç Admin Paneli</span></a>
+                    <div class="btn-group pull-right">
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="icon-user"></i><span class="hidden-phone"><asp:Literal runat="server" ID="ltOnUser"></asp:Literal></span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                             <li>
+                                <a>
+                                <asp:Literal runat="server" ID="ltJobName"></asp:Literal></a>
+                            </li>
+                             <li class="divider"></li>
+                            <li><a href="Profil.aspx">Profil</a></li>
+                            <li class="divider"></li>
+                            <li><a href="logout.aspx">Çıkış</a></li>
+                        </ul>
+                    </div>
+                    <!-- user dropdown ends -->
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <!-- topbar ends -->
+        <div class="container-fluid">
+            <div class="row-fluid">
+            <uc1:LeftMenu runat="server" ID="LeftMenu" />
+                <div id="content" class="span10">
+                    <asp:ContentPlaceHolder runat="server" ID="mainHolder"></asp:ContentPlaceHolder>
+                </div>
+            </div>
+            <hr />
+            <div class="modal hide fade" id="myModal">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h3>Settings</h3>
+                </div>
+                <div class="modal-body">
+                    <p>Here settings can be configured...</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn" data-dismiss="modal">Close</a>
+                    <a href="#" class="btn btn-primary">Save changes</a>
+                </div>
+            </div>
+
+            <footer>
+        
+            </footer>
+        </div>
+    </form>
+    </body>
+</html>
+
